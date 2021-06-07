@@ -1,0 +1,58 @@
+pipeline {
+    agent any
+    environment {
+        
+        DOCKER_IMAGE_NAME = "rizwan1989/riz-tomcat"
+        registry = "registry.hub.docker.com/rizwan1989/riz-tomcat"
+        
+       
+    }
+
+    stages {
+
+        stage('repo clone from github') {
+           
+            steps {
+                 git url: 'https://github.com/rizwannadeem2017/Kubernetes.git'
+           }  
+        }
+
+        stage('Build Docker Image') {
+           
+            steps {
+                script {
+                    app = docker.build(DOCKER_IMAGE_NAME)
+                    
+                }
+            }
+        }
+        stage('Push Docker Image') {
+            
+            steps {
+                script {
+                    docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
+                          app.push("${env.BUILD_NUMBER}")
+                        //app.push("apiv1")
+                    }
+                }
+            }
+        }
+        
+        stage('Deploy to Kubernetes Environment') {
+            steps {
+                kubernetesDeploy(
+                    kubeconfigId: 'kubernetes-1',
+                    configs: 'tomcat.yaml',
+                    enableConfigSubstitution: true
+                  )
+            }
+          }
+        stage('Remove Unused docker image from docker agent') {
+           
+            steps{
+                sh "docker rmi $registry:$BUILD_NUMBER"
+                sh "docker rmi $registry1:latest"
+            }
+        }
+    }
+ }
