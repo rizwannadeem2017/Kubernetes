@@ -13,7 +13,8 @@ pipeline {
         stage('repo clone from github') {
            
             steps {
-                 git url: 'https://github.com/rizwannadeem2017/Kubernetes.git'
+                 git([url: 'https://github.com/rizwannadeem2017/Kubernetes.git', branch: 'master', credentialsId: 'github'])
+             
            }  
         }
 
