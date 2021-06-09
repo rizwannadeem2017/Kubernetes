@@ -14,7 +14,7 @@ pipeline {
            
             //chechoutscm
            steps {
-                git([url: 'git@github.com:rizwannadeem2017/Kubernetes.git', branch: 'master', credentialsId: 'github'])
+                git([url: 'git@github.com:rizwannadeem2017/Kubernetes.git', branch: 'main', credentialsId: 'github'])
                 //git([url: 'https://github.com/rizwannadeem2017/Kubernetes.git', branch: 'master', credentialsId: 'github'])
            }  
         }
