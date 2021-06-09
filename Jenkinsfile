@@ -55,7 +55,7 @@ pipeline {
            
             steps{
                 sh "docker rmi $registry:$BUILD_NUMBER"
-                sh "docker rmi $registry1:latest"
+//                 sh "docker rmi $registry1:latest"
             }
         }
     }
