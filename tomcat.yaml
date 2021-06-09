@@ -18,8 +18,8 @@ spec:
         ports:
           - name: http-port
             containerPort: 8080
-      command: ["echo"]
-      args: ["$(BUILD_NUMBER) $(BUILD_ID)"]
+        command: ["echo"]
+        args: ["$(BUILD_NUMBER) $(BUILD_ID)"]
 ---
 apiVersion: v1
 kind: Service
