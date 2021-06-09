@@ -43,7 +43,7 @@ pipeline {
         stage('Deploy to Kubernetes Environment') {
             steps {
                  sh "env"
-                 sh "sed -e 's/build_version/${env.BUILD_NUMBER}/g' tomcat.yaml"
+                 sh "sed -i 's/build_version/${env.BUILD_NUMBER}/g' tomcat.yaml"
                  sh "kubectl apply -f tomcat.yaml"
                  
 //                 kubernetesDeploy(
