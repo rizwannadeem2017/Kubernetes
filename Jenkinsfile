@@ -10,14 +10,14 @@ pipeline {
 
     stages {
 
-        stage('repo clone from github') {
+//         stage('repo clone from github') {
            
-            //chechoutscm
-           steps {
-              //  git([url: 'git@github.com:rizwannadeem2017/Kubernetes.git', branch: 'main', credentialsId: 'github'])
-                //git([url: 'https://github.com/rizwannadeem2017/Kubernetes.git', branch: 'master', credentialsId: 'github'])
-           }  
-        }
+//             //chechoutscm
+//            steps {
+//               //  git([url: 'git@github.com:rizwannadeem2017/Kubernetes.git', branch: 'main', credentialsId: 'github'])
+//                 //git([url: 'https://github.com/rizwannadeem2017/Kubernetes.git', branch: 'master', credentialsId: 'github'])
+//            }  
+//         }
 
         stage('Build Docker Image') {
            
