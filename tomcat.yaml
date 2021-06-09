@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: tomcat
-        image: rizwan1989/riz-tomcat:latest
+        image: rizwan1989/riz-tomcat:env.BUILD_NUMBER
         ports:
           - name: http-port
             containerPort: 8080
