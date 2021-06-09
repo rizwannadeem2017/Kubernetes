@@ -14,12 +14,10 @@ spec:
     spec:
       containers:
       - name: tomcat
-        image: rizwan1989/riz-tomcat:35
+        image: rizwan1989/riz-tomcat:build_version
         ports:
           - name: http-port
             containerPort: 8080
-        command: ["echo"]
-        args: ["$(BUILD_NUMBER) $(BUILD_ID)"]
 ---
 apiVersion: v1
 kind: Service
