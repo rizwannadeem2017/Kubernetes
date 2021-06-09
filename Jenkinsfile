@@ -19,30 +19,31 @@ pipeline {
 //            }  
 //         }
 
-        stage('Build Docker Image') {
+//         stage('Build Docker Image') {
            
-            steps {
-                script {
-                    app = docker.build(DOCKER_IMAGE_NAME)
+//             steps {
+//                 script {
+//                     app = docker.build(DOCKER_IMAGE_NAME)
                     
-                }
-            }
-        }
-        stage('Push Docker Image') {
+//                 }
+//             }
+//         }
+//         stage('Push Docker Image') {
             
-            steps {
-                script {
-                    docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
-                          app.push("${env.BUILD_NUMBER}")
-                        //app.push("apiv1")
-                    }
-                }
-            }
-        }
+//             steps {
+//                 script {
+//                     docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
+//                           app.push("${env.BUILD_NUMBER}")
+//                         //app.push("apiv1")
+//                     }
+//                 }
+//             }
+//         }
         
         stage('Deploy to Kubernetes Environment') {
             steps {
-                 sh "kubectl apply -f tomcat.yaml"
+                 sh "env"
+                 //sh "kubectl apply -f tomcat.yaml"
                  
 //                 kubernetesDeploy(
 //                     kubeconfigId: 'kubernetes-1',
