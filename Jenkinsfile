@@ -42,11 +42,13 @@ pipeline {
         
         stage('Deploy to Kubernetes Environment') {
             steps {
-                kubernetesDeploy(
-                    kubeconfigId: 'kubernetes-1',
-                    configs: 'tomcat.yaml',
-                    enableConfigSubstitution: true
-                  )
+                 sh "kubectl apply -f tomcat.yaml"
+                 
+//                 kubernetesDeploy(
+//                     kubeconfigId: 'kubernetes-1',
+//                     configs: 'tomcat.yaml',
+//                     enableConfigSubstitution: true
+//                   )
             }
           }
         stage('Remove Unused docker image from docker agent') {
