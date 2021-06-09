@@ -1,5 +1,5 @@
 pipeline {
-    agent Docker-agent
+    agent 'Docker-agent'
     environment {
         
         DOCKER_IMAGE_NAME = "rizwan1989/riz-tomcat"
