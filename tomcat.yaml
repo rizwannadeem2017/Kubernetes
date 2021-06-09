@@ -14,10 +14,11 @@ spec:
     spec:
       containers:
       - name: tomcat
-        image: "rizwan1989/riz-tomcat:$(BUILD_NUMBER)"
+        image: rizwan1989/riz-tomcat:35
         ports:
           - name: http-port
             containerPort: 8080
+      command: ["env"]
 ---
 apiVersion: v1
 kind: Service
