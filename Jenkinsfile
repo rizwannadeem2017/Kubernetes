@@ -1,5 +1,5 @@
 pipeline {
-    agent 'Docker-agent'
+    agent any
     environment {
         
         DOCKER_IMAGE_NAME = "rizwan1989/riz-tomcat"
@@ -10,14 +10,14 @@ pipeline {
 
     stages {
 
-        //stage('repo clone from github') {
+        stage('repo clone from github') {
            
             //chechoutscm
-           // steps {
-               //  git([url: 'git@github.com:rizwannadeem2017/Kubernetes.git', branch: 'master', credentialsId: 'github'])
-             //    git([url: 'https://github.com/rizwannadeem2017/Kubernetes.git', branch: 'master', credentialsId: 'github'])
-           //}  
-        //}
+           steps {
+                git([url: 'git@github.com:rizwannadeem2017/Kubernetes.git', branch: 'master', credentialsId: 'github'])
+                //git([url: 'https://github.com/rizwannadeem2017/Kubernetes.git', branch: 'master', credentialsId: 'github'])
+           }  
+        }
 
         stage('Build Docker Image') {
            
