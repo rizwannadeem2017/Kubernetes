@@ -10,40 +10,40 @@ pipeline {
 
     stages {
 
-//         stage('repo clone from github') {
+        stage('repo clone from github') {
            
-//             //chechoutscm
-//            steps {
-//                 git([url: 'git@github.com:rizwannadeem2017/Kubernetes.git', branch: 'main', credentialsId: 'github'])
-//                 //git([url: 'https://github.com/rizwannadeem2017/Kubernetes.git', branch: 'master', credentialsId: 'github'])
-//            }  
-//         }
+            //chechoutscm
+           steps {
+                git([url: 'git@github.com:rizwannadeem2017/Kubernetes.git', branch: 'main', credentialsId: 'github'])
+                //git([url: 'https://github.com/rizwannadeem2017/Kubernetes.git', branch: 'master', credentialsId: 'github'])
+           }  
+        }
 
-//         stage('Build Docker Image') {
+        stage('Build Docker Image') {
            
-//             steps {
-//                 script {
-//                     app = docker.build(DOCKER_IMAGE_NAME)
+            steps {
+                script {
+                    app = docker.build(DOCKER_IMAGE_NAME)
                     
-//                 }
-//             }
-//         }
-//         stage('Push Docker Image') {
+                }
+            }
+        }
+        stage('Push Docker Image') {
             
-//             steps {
-//                 script {
-//                     docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
-//                           app.push("${env.BUILD_NUMBER}")
-//                         //app.push("apiv1")
-//                     }
-//                 }
-//             }
-//         }
+            steps {
+                script {
+                    docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
+                          app.push("${env.BUILD_NUMBER}")
+                        //app.push("apiv1")
+                    }
+                }
+            }
+        }
         
         stage('Deploy to Kubernetes Environment') {
             steps {
                  sh "env"
-                 //sh "kubectl apply -f tomcat.yaml"
+                 sh "kubectl apply -f tomcat.yaml"
                  
 //                 kubernetesDeploy(
 //                     kubeconfigId: 'kubernetes-1',
